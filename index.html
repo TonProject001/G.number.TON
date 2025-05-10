@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>เกมคลิกตัวเลข 1-50</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+    #menu {
+      text-align: center;
+      padding-top: 20vh;
+    }
+    button {
+      font-size: 24px;
+      padding: 10px 30px;
+      cursor: pointer;
+    }
+    #gameContainer {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      display: none;
+      background-color: #e6eaf0;
+    }
+    .circle {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      color: white;
+      text-align: center;
+      line-height: 80px;
+      font-size: 28px;
+      cursor: pointer;
+      user-select: none;
+      background-color: #6A9FB5;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease;
+    }
+    #successPopup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+      display: none;
+      z-index: 100;
+    }
+    #successPopup h2 {
+      margin: 0 0 10px 0;
+      font-size: 36px;
+      color: green;
+    }
+    #successPopup p {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    #successPopup button {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin-top: 20px;
+    }
+    #nameInputBox {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      display: none;
+      z-index: 99;
+    }
+    #nameInputBox input {
+      font-size: 24px;
+      padding: 10px;
+      width: 300px;
+    }
+    #nameInputBox button {
+      font-size: 20px;
+      padding: 10px 20px;
+      margin-left: 10px;
+    }
+    #leaderboard {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 20px;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- หน้าเมนู -->
+  <div id="menu">
+    <h1 style="font-size: 40px; margin-bottom: 20px;">เกมคลิกตัวเลข 1-50</h1>
+    <button onclick="startGame()">เล่นเกม</button>
+    <div id="leaderboard"><strong>TOP 10</strong><br></div>
+  </div>
+
+  <!-- พื้นที่เกม -->
+  <div id="gameContainer"></div>
+
+  <!-- หน้ากรอกชื่อ -->
+  <div id="nameInputBox">
+    <input type="text" id="playerName" placeholder="กรุณาใส่ชื่อของคุณ">
+    <button onclick="saveScore()">ส่ง</button>
+  </div>
+
+  <!-- Popup สำเร็จ -->
+  <div id="successPopup">
+    <h2>สำเร็จแล้ว!</h2>
+    <p id="popupTime">เวลา: 0.00 วินาที</p>
+    <p id="popupName"></p>
+    <button onclick="closePopup()">กลับสู่เมนู</button>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
